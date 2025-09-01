@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horror Tolerance Test - Discover Your Comfort Zone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #bbb;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .start-section {
+            text-align: center;
+        }
+
+        .start-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .quiz-container {
+            display: none;
+        }
+
+        .question-container {
+            display: none;
+            text-align: center;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question h2 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .option-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            text-align: left;
+        }
+
+        .option-btn:hover {
+            background: rgba(255, 107, 107, 0.2);
+            border-color: #ff6b6b;
+            transform: translateX(10px);
+        }
+
+        .results-container {
+            display: none;
+            text-align: center;
+        }
+
+        .tolerance-type {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .restart-btn {
+            background: transparent;
+            border: 2px solid #ff6b6b;
+            color: #ff6b6b;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .restart-btn:hover {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .web-visual {
+            margin: 30px 0;
+            position: relative;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .web-circle {
+            width: 200px;
+            height: 200px;
+            border: 3px solid rgba(255, 107, 107, 0.6);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tolerance-dot {
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+        }
+
+        .web-labels {
+            position: absolute;
+            font-size: 0.9em;
+            color: #bbb;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .main-content { padding: 25px; }
+            .options { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Horror Tolerance Test</h1>
+            <p>Discover your personal horror comfort zone and get movie recommendations that won't leave you traumatized</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Start Section -->
+            <div class="start-section" id="start-section">
+                <h2 style="margin-bottom: 20px;">Ready to discover your horror personality?</h2>
+                <p style="margin-bottom: 30px; color: #ccc;">This quick test will help you understand what types of horror content you can enjoy without the nightmares.</p>
+                <button class="start-btn" onclick="startQuiz()">Start the Test</button>
+            </div>
+
+            <!-- Quiz Section -->
+            <div class="quiz-container" id="quiz-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+
+                <!-- Questions will be inserted here by JavaScript -->
+                <div id="questions-container"></div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-container" id="results-container">
+                <div class="tolerance-type" id="tolerance-type">Calculating...</div>
+                <div class="description" id="result-description"></div>
+                <div class="web-visual">
+                    <div class="web-circle" id="web-circle">
+                        <div class="tolerance-dot" id="tolerance-dot"></div>
+                    </div>
+                </div>
+                <button class="restart-btn" onclick="restartQuiz()">Take Test Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data
+        const questions = [
+            {
+                question: "How do you feel about watching someone escape from an elaborate death trap?",
+                options: [
+                    { text: "Love the tension and creativity", score: { narrative: 2, gore: 1 } },
+                    { text: "Enjoy it if they're smart about escaping", score: { narrative: 3, intelligence: 2 } },
+                    { text: "Okay as long as it's quick", score: { quick: 2, narrative: 1 } },
+                    { text: "Prefer to avoid entirely", score: { mild: 2 } }
+                ]
+            },
+            {
+                question: "Your reaction to a zombie apocalypse scenario:",
+                options: [
+                    { text: "Bring on the survival action!", score: { apocalypse: 3, action: 2 } },
+                    { text: "Interesting if characters are smart", score: { apocalypse: 2, intelligence: 3 } },
+                    { text: "Okay with some zombie kills", score: { apocalypse: 1, gore: 1 } },
+                    { text: "Too intense for me", score: { mild: 3 } }
+                ]
+            },
+            {
+                question: "A character is about to be slowly tortured for information:",
+                options: [
+                    { text: "I can handle it if it serves the plot", score: { narrative: 2, torture: -1 } },
+                    { text: "Skip or mute that scene", score: { torture: -2, mild: 1 } },
+                    { text: "Absolutely not - turn it off", score: { torture: -3, mild: 3 } },
+                    { text: "Depends on how it's filmed", score: { narrative: 1, torture: -1 } }
+                ]
+            },
+            {
+                question: "How do you feel about jump scares?",
+                options: [
+                    { text: "Love them - bring on the adrenaline!", score: { jumpscares: 3 } },
+                    { text: "Fun occasionally", score: { jumpscares: 2 } },
+                    { text: "Tolerate them but prefer psychological tension", score: { psychological: 2, jumpscares: 1 } },
+                    { text: "Hate being startled", score: { mild: 2, jumpscares: -1 } }
+                ]
+            },
+            {
+                question: "A movie shows a helpless animal being harmed:",
+                options: [
+                    { text: "Immediately turn it off", score: { mild: 3, animal: -3 } },
+                    { text: "Very uncomfortable - probably stop watching", score: { mild: 2, animal: -2 } },
+                    { text: "Don't like it but might continue", score: { animal: -1, narrative: 1 } },
+                    { text: "Can handle it if it's important to the story", score: { narrative: 2, animal: -1 } }
+                ]
+            },
+            {
+                question: "Your preference for character intelligence in horror:",
+                options: [
+                    { text: "Characters must make smart decisions", score: { intelligence: 3, narrative: 2 } },
+                    { text: "Prefer smart characters but some mistakes are okay", score: { intelligence: 2, narrative: 1 } },
+                    { text: "Don't mind some dumb decisions for plot", score: { narrative: 1 } },
+                    { text: "Just want to be entertained regardless", score: { entertainment: 2 } }
+                ]
+            },
+            {
+                question: "Blood and gore level you're comfortable with:",
+                options: [
+                    { text: "The more creative and over-the-top, the better", score: { gore: 3, creative: 2 } },
+                    { text: "Some gore is fine if it's quick", score: { gore: 2, quick: 2 } },
+                    { text: "Minimal blood, focus on suspense instead", score: { psychological: 3, gore: -1 } },
+                    { text: "Prefer little to no blood", score: { mild: 3, gore: -2 } }
+                ]
+            },
+            {
+                question: "A movie where the 'monster' is actually human:",
+                options: [
+                    { text: "Most terrifying - humans are the real monsters", score: { psychological: 3, human: 2 } },
+                    { text: "Interesting psychological exploration", score: { psychological: 2, narrative: 2 } },
+                    { text: "Prefer supernatural threats", score: { supernatural: 2 } },
+                    { text: "Too realistic and disturbing", score: { mild: 2, fantasy: 2 } }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let scores = {
+            narrative: 0, gore: 0, mild: 0, psychological: 0, apocalypse: 0,
+            intelligence: 0, quick: 0, torture: 0, jumpscares: 0, animal: 0,
+            creative: 0, entertainment: 0, human: 0, supernatural: 0, fantasy: 0, action: 0
+        };
+
+        function startQuiz() {
+            document.getElementById('start-section').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const container = document.getElementById('questions-container');
+            const question = questions[currentQuestion];
+            
+            container.innerHTML = `
+                <div class="question-container active">
+                    <div class="question">
+                        <h2>${question.question}</h2>
+                        <div class="options">
+                            ${question.options.map((option, index) => `
+                                <button class="option-btn" onclick="selectAnswer(${index})">
+                                    ${option.text}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            updateProgress();
+        }
+
+        function selectAnswer(optionIndex) {
+            const question = questions[currentQuestion];
+            const selectedOption = question.options[optionIndex];
+            
+            // Add scores
+            for (const [key, value] of Object.entries(selectedOption.score)) {
+                scores[key] = (scores[key] || 0) + value;
+            }
+
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestion / questions.length) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'block';
+
+            const result = calculateToleranceType();
+            document.getElementById('tolerance-type').textContent = result.type;
+            document.getElementById('result-description').innerHTML = result.description;
+            
+            // Position the dot based on tolerance level
+            positionToleranceDot(result.intensity);
+        }
+
+        function calculateToleranceType() {
+            // Determine tolerance type based on scores
+            if (scores.mild >= 6) {
+                return {
+                    type: "The Cautious Viewer",
+                    description: "You prefer psychological tension over graphic content. Perfect for mystery thrillers, ghost stories, and suspenseful films that rely on atmosphere rather than shock value. <br><br><strong>Recommended:</strong> The Others, The Sixth Sense, Psycho (1960)",
+                    intensity: 0.2
+                };
+            } else if (scores.narrative >= 4 && scores.intelligence >= 4) {
+                return {
+                    type: "The Narrative Purist",
+                    description: "You appreciate horror that serves a story purpose and features intelligent characters. You can handle moderate content when it's well-crafted and meaningful. <br><br><strong>Recommended:</strong> The Conjuring, Alien (1979), Get Out",
+                    intensity: 0.4
+                };
+            } else if (scores.apocalypse >= 4) {
+                return {
+                    type: "The Survivor",
+                    description: "Post-apocalyptic and survival horror is your sweet spot. You enjoy scenarios where violence feels justified and characters fight back intelligently. <br><br><strong>Recommended:</strong> 28 Days Later, The Road, A Quiet Place",
+                    intensity: 0.6
+                };
+            } else if (scores.gore >= 4 && scores.creative >= 2) {
+                return {
+                    type: "The Gore Enthusiast",
+                    description: "You appreciate creative, well-executed horror effects and don't mind graphic content when it's artistically done. You likely enjoy practical effects and innovative death sequences. <br><br><strong>Recommended:</strong> Final Destination series, Evil Dead (2013), The Thing (1982)",
+                    intensity: 0.8
+                };
+            } else {
+                return {
+                    type: "The Balanced Horror Fan",
+                    description: "You enjoy a mix of horror elements but have clear boundaries. You appreciate good storytelling with moderate scares and can handle some intensity when it's well-executed. <br><br><strong>Recommended:</strong> Scream, The Ring, Poltergeist",
+                    intensity: 0.5
+                };
+            }
+        }
+
+        function positionToleranceDot(intensity) {
+            const dot = document.getElementById('tolerance-dot');
+            const radius = 90; // Distance from center
+            const angle = intensity * 360; // Convert to degrees
+            
+            const x = Math.cos(angle * Math.PI / 180) * (radius * intensity);
+            const y = Math.sin(angle * Math.PI / 180) * (radius * intensity);
+            
+            dot.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            scores = {
+                narrative: 0, gore: 0, mild: 0, psychological: 0, apocalypse: 0,
+                intelligence: 0, quick: 0, torture: 0, jumpscares: 0, animal: 0,
+                creative: 0, entertainment: 0, human: 0, supernatural: 0, fantasy: 0, action: 0
+            };
+            
+            document.getElementById('results-container').style.display = 'none';
+            document.getElementById('start-section').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+        }
+    </script>
+</body>
+</html>
