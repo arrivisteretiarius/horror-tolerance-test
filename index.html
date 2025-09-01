@@ -278,7 +278,7 @@
             {
                 question: "How do you feel about watching someone escape from an elaborate death trap?",
                 options: [
-                    { text: "Love the tension and creativity", score: { narrative: 2, gore: 1 } },
+                    { text: "Love the tension and creativity", score: { narrative: 2, gore: 1, creative: 2 } },
                     { text: "Enjoy it if they're smart about escaping", score: { narrative: 3, intelligence: 2 } },
                     { text: "Okay as long as it's quick", score: { quick: 2, narrative: 1 } },
                     { text: "Prefer to avoid entirely", score: { mild: 2 } }
@@ -346,6 +346,114 @@
                     { text: "Prefer supernatural threats", score: { supernatural: 2 } },
                     { text: "Too realistic and disturbing", score: { mild: 2, fantasy: 2 } }
                 ]
+            },
+            {
+                question: "A character discovers they're being stalked:",
+                options: [
+                    { text: "Love the paranoia and building tension", score: { psychological: 3, suspense: 2 } },
+                    { text: "Great if they figure it out intelligently", score: { intelligence: 3, psychological: 1 } },
+                    { text: "Okay but hope it resolves quickly", score: { quick: 2, mild: 1 } },
+                    { text: "Too anxiety-inducing for me", score: { mild: 3 } }
+                ]
+            },
+            {
+                question: "How do you feel about supernatural possession scenes?",
+                options: [
+                    { text: "Fascinating psychological horror", score: { supernatural: 3, psychological: 2 } },
+                    { text: "Good if it serves character development", score: { supernatural: 2, narrative: 2 } },
+                    { text: "Okay with some but not too intense", score: { supernatural: 1, mild: 1 } },
+                    { text: "Find them silly or boring", score: { realistic: 2 } }
+                ]
+            },
+            {
+                question: "A scene showing someone trapped in a confined space:",
+                options: [
+                    { text: "Claustrophobic tension is amazing", score: { psychological: 3, suspense: 2 } },
+                    { text: "Good if they escape through cleverness", score: { intelligence: 3, suspense: 1 } },
+                    { text: "Uncomfortable but manageable", score: { mild: 1, suspense: 1 } },
+                    { text: "Too anxiety-provoking", score: { mild: 3 } }
+                ]
+            },
+            {
+                question: "Your tolerance for body horror (transformations, mutations):",
+                options: [
+                    { text: "Love the grotesque creativity", score: { bodyhorror: 3, creative: 2 } },
+                    { text: "Can handle it if it's well-done", score: { bodyhorror: 2, narrative: 1 } },
+                    { text: "Very uncomfortable but might endure", score: { bodyhorror: -1, mild: 1 } },
+                    { text: "Absolutely cannot watch", score: { bodyhorror: -3, mild: 3 } }
+                ]
+            },
+            {
+                question: "A movie set in a post-apocalyptic wasteland:",
+                options: [
+                    { text: "Perfect setting for survival stories", score: { apocalypse: 3, survival: 2 } },
+                    { text: "Good backdrop for character development", score: { apocalypse: 2, narrative: 2 } },
+                    { text: "Interesting but can be too bleak", score: { apocalypse: 1, mild: 1 } },
+                    { text: "Too depressing and hopeless", score: { mild: 3 } }
+                ]
+            },
+            {
+                question: "How do you feel about horror movies with child characters in danger?",
+                options: [
+                    { text: "Raises the stakes effectively", score: { suspense: 2, narrative: 2 } },
+                    { text: "Okay if handled tastefully", score: { narrative: 2, mild: 1 } },
+                    { text: "Makes me very uncomfortable", score: { mild: 2, protective: 2 } },
+                    { text: "Cannot watch at all", score: { mild: 3, protective: 3 } }
+                ]
+            },
+            {
+                question: "A horror movie with dark comedy mixed in:",
+                options: [
+                    { text: "Perfect balance - horror comedy is the best", score: { comedy: 3, creative: 2 } },
+                    { text: "Good when done well", score: { comedy: 2, narrative: 1 } },
+                    { text: "Prefer my horror straight, no comedy", score: { serious: 2, psychological: 1 } },
+                    { text: "Ruins the scary atmosphere", score: { serious: 3 } }
+                ]
+            },
+            {
+                question: "Your reaction to prolonged chase sequences:",
+                options: [
+                    { text: "Heart-pounding excitement", score: { action: 3, suspense: 2 } },
+                    { text: "Great if the victim is resourceful", score: { intelligence: 2, action: 2 } },
+                    { text: "Okay but prefer shorter scenes", score: { action: 1, mild: 1 } },
+                    { text: "Too stressful to enjoy", score: { mild: 3 } }
+                ]
+            },
+            {
+                question: "How do you feel about movies where 'everyone dies' at the end?",
+                options: [
+                    { text: "Bold storytelling choice - respect it", score: { narrative: 3, dark: 2 } },
+                    { text: "Fine if it serves the story's message", score: { narrative: 2, dark: 1 } },
+                    { text: "Prefer some survivors", score: { hopeful: 2, mild: 1 } },
+                    { text: "Too depressing and nihilistic", score: { hopeful: 3, mild: 2 } }
+                ]
+            },
+            {
+                question: "A scene involving medical/surgical horror:",
+                options: [
+                    { text: "Fascinating when done realistically", score: { medical: 2, realistic: 2 } },
+                    { text: "Can handle if it's brief", score: { medical: 1, quick: 2 } },
+                    { text: "Very squeamish but might endure", score: { medical: -1, mild: 1 } },
+                    { text: "Cannot watch medical procedures", score: { medical: -3, mild: 3 } }
+                ]
+            },
+            {
+                question: "Your preference for horror movie endings:",
+                options: [
+                    { text: "Ambiguous endings that make you think", score: { psychological: 3, narrative: 2 } },
+                    { text: "Clear resolution where good triumphs", score: { hopeful: 3, traditional: 2 } },
+                    { text: "Twist endings that reframe everything", score: { creative: 3, psychological: 1 } },
+                    { text: "Don't care as long as it's well-executed", score: { narrative: 2 } }
+                ]
+            },
+            {
+                question: "How do you feel about horror that tackles social issues?",
+                options: [
+                    { text: "Love horror with deeper meaning", score: { social: 3, narrative: 2, intelligence: 2 } },
+                    { text: "Good when subtly integrated", score: { social: 2, narrative: 2 } },
+                    { text: "Prefer entertainment over messages", score: { entertainment: 2 } },
+                    { text: "Just want to be scared, not lectured", score: { entertainment: 3, simple: 1 } }
+                ]
             }
         ];
 
@@ -353,7 +461,10 @@
         let scores = {
             narrative: 0, gore: 0, mild: 0, psychological: 0, apocalypse: 0,
             intelligence: 0, quick: 0, torture: 0, jumpscares: 0, animal: 0,
-            creative: 0, entertainment: 0, human: 0, supernatural: 0, fantasy: 0, action: 0
+            creative: 0, entertainment: 0, human: 0, supernatural: 0, fantasy: 0, 
+            action: 0, suspense: 0, realistic: 0, bodyhorror: 0, survival: 0,
+            protective: 0, comedy: 0, serious: 0, dark: 0, hopeful: 0,
+            medical: 0, traditional: 0, social: 0, simple: 0
         };
 
         function startQuiz() {
@@ -413,16 +524,302 @@
 
             const result = calculateToleranceType();
             document.getElementById('tolerance-type').textContent = result.type;
-            document.getElementById('result-description').innerHTML = result.description;
             
-            // Create hexagon visualization
+            // Create detailed results
+            const detailedResults = `
+                <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <h3 style="color: #ff6b6b; margin-bottom: 10px;">${result.subtitle}</h3>
+                        <p style="font-size: 1.1em; line-height: 1.6; color: #ddd;">${result.description}</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #fff; margin-bottom: 15px; border-bottom: 2px solid #ff6b6b; padding-bottom: 5px;">🎯 Your Strengths</h4>
+                        <ul style="color: #ddd; line-height: 1.6;">
+                            ${result.strengths.map(strength => `<li style="margin-bottom: 8px;">${strength}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #fff; margin-bottom: 15px; border-bottom: 2px solid #ee5a24; padding-bottom: 5px;">⚠️ Potential Challenges</h4>
+                        <ul style="color: #ddd; line-height: 1.6;">
+                            ${result.challenges.map(challenge => `<li style="margin-bottom: 8px;">${challenge}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #fff; margin-bottom: 15px; border-bottom: 2px solid #00b894; padding-bottom: 5px;">✅ Perfect Matches</h4>
+                        <ul style="color: #ddd; line-height: 1.6;">
+                            ${result.perfectMatches.map(match => `<li style="margin-bottom: 8px;"><strong>${match.split(' - ')[0]}</strong> - ${match.split(' - ')[1] || 'Highly recommended for your profile'}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #fff; margin-bottom: 15px; border-bottom: 2px solid #fdcb6e; padding-bottom: 5px;">👍 Good Matches</h4>
+                        <ul style="color: #ddd; line-height: 1.6;">
+                            ${result.goodMatches.map(match => `<li style="margin-bottom: 8px;"><strong>${match.split(' - ')[0]}</strong> - ${match.split(' - ')[1] || 'Worth trying with some caution'}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #fff; margin-bottom: 15px; border-bottom: 2px solid #e17055; padding-bottom: 5px;">❌ Avoid Completely</h4>
+                        <ul style="color: #ddd; line-height: 1.6;">
+                            ${result.avoidCompletely.map(avoid => `<li style="margin-bottom: 8px;"><strong>${avoid.split(' - ')[0]}</strong> - ${avoid.split(' - ')[1] || 'Likely to cause discomfort'}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255, 107, 107, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+                        <h4 style="color: #ff6b6b; margin-bottom: 10px;">💡 Pro Tips</h4>
+                        <p style="color: #ddd; line-height: 1.6; margin: 0;">${result.tips}</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('result-description').innerHTML = detailedResults;
+            
+            // Create tolerance profile chart
             createHexagonChart(result.stats);
         }
 
         function calculateToleranceType() {
-            // Calculate normalized stats (0-10 scale)
+            // Calculate normalized stats (0-10 scale) with more nuanced scoring
             const stats = {
-                'Gore': Math.max(0, Math.min(10, (scores.gore + 3) * 1.5)),
+                'Gore Tolerance': Math.max(0, Math.min(10, (scores.gore + scores.bodyhorror + scores.medical) * 1.2 + 2)),
+                'Psychological': Math.max(0, Math.min(10, (scores.psychological + scores.suspense + scores.dark) * 1.3 + 1)),
+                'Survival/Action': Math.max(0, Math.min(10, (scores.apocalypse + scores.action + scores.survival) * 1.4 + 1)),
+                'Intelligence Need': Math.max(0, Math.min(10, (scores.intelligence + scores.narrative + scores.social) * 1.3 + 1)),
+                'Jump Scares': Math.max(0, Math.min(10, scores.jumpscares * 2 + 3)),
+                'Creative/Comedy': Math.max(0, Math.min(10, (scores.creative + scores.comedy) * 1.8 + 2))
+            };
+
+            // Determine tolerance type based on dominant scores
+            const topScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+            const primaryTrait = topScores[0][0];
+            const secondaryTrait = topScores[1][0];
+
+            if (scores.mild >= 8 || scores.protective >= 4) {
+                // Adjust stats for cautious viewers
+                stats['Gore Tolerance'] *= 0.2;
+                stats['Jump Scares'] *= 0.4;
+                return {
+                    type: "The Cautious Viewer",
+                    subtitle: "The Atmosphere Seeker",
+                    description: `You prefer psychological tension and atmospheric dread over graphic content. You appreciate the art of building suspense and find that suggestion is often more powerful than explicit imagery. Your ideal horror experience relies on mood, cinematography, and psychological depth rather than shock tactics.`,
+                    strengths: [
+                        "Highly attuned to subtle horror elements and atmosphere",
+                        "Appreciates sophisticated storytelling and character development",
+                        "Values films that respect audience intelligence",
+                        "Enjoys the psychological aspects of fear more than physical"
+                    ],
+                    challenges: [
+                        "May miss out on well-crafted films with moderate gore",
+                        "Could be overwhelmed by sudden intensity spikes",
+                        "Might struggle with horror comedies that mix violence with humor"
+                    ],
+                    perfectMatches: [
+                        "The Others (2001) - Atmospheric ghost story",
+                        "The Sixth Sense (1999) - Psychological supernatural drama", 
+                        "The Babadook (2014) - Psychological horror about grief",
+                        "Psycho (1960) - Classic psychological thriller"
+                    ],
+                    goodMatches: [
+                        "The Ring (2002) - Some disturbing imagery but story-focused",
+                        "Rosemary's Baby (1968) - Slow-burn psychological horror",
+                        "The Conjuring (2013) - Well-crafted with moderate scares"
+                    ],
+                    avoidCompletely: [
+                        "Saw franchise - Graphic torture sequences",
+                        "Hostel series - Extreme gore and violence", 
+                        "The Human Centipede - Disturbing body horror",
+                        "Final Destination series - Creative but graphic deaths"
+                    ],
+                    tips: "Start with classic supernatural films and gradually explore modern psychological horror. Read content warnings and viewer discussions before watching.",
+                    stats: stats
+                };
+            } else if ((scores.intelligence + scores.narrative + scores.social) >= 12) {
+                stats['Intelligence Need'] *= 1.4;
+                stats['Psychological'] *= 1.2;
+                return {
+                    type: "The Narrative Purist",
+                    subtitle: "The Story-Driven Explorer",
+                    description: `You're the sophisticated horror fan who demands that every scare serve a purpose. You appreciate intelligent characters making reasonable decisions, and you can handle moderate to intense content when it's well-crafted and meaningful. You're drawn to horror that explores deeper themes and respects both character agency and audience intelligence.`,
+                    strengths: [
+                        "Excellent at identifying quality horror from cheap thrills",
+                        "Can handle intense content when it serves the story",
+                        "Appreciates subtext, themes, and social commentary in horror",
+                        "Values character development and intelligent plot construction"
+                    ],
+                    challenges: [
+                        "May become frustrated with 'stupid character' decisions",
+                        "Could dismiss films with style-over-substance approaches",
+                        "Might struggle with purely visceral or experimental horror"
+                    ],
+                    perfectMatches: [
+                        "The Conjuring (2013) - Well-crafted supernatural horror",
+                        "Alien (1979) - Intelligent sci-fi horror with smart characters",
+                        "Get Out (2017) - Social thriller with deeper meaning",
+                        "Hereditary (2018) - Complex family horror with rich themes"
+                    ],
+                    goodMatches: [
+                        "The Wailing (2016) - Mysterious supernatural thriller",
+                        "It Follows (2014) - Unique concept with intelligent execution",
+                        "The Witch (2015) - Period horror with authentic atmosphere"
+                    ],
+                    avoidCompletely: [
+                        "Most slasher sequels - Repetitive and character-light",
+                        "Torture porn subgenre - Violence without purpose",
+                        "Generic possession films - Formulaic and predictable"
+                    ],
+                    tips: "Seek out critically acclaimed horror films and read reviews from sources that value storytelling. Foreign horror often offers fresh perspectives.",
+                    stats: stats
+                };
+            } else if ((scores.apocalypse + scores.action + scores.survival) >= 8) {
+                stats['Survival/Action'] *= 1.5;
+                stats['Gore Tolerance'] *= 1.3;
+                return {
+                    type: "The Survivor",
+                    subtitle: "The Post-Apocalyptic Enthusiast",
+                    description: `You thrive on survival horror and post-apocalyptic scenarios where violence feels justified and characters fight back intelligently. You appreciate the harsh realities of extreme situations and can handle graphic content when it serves the survival narrative. You're drawn to stories about human resilience and adaptation.`,
+                    strengths: [
+                        "Handles realistic violence in survival contexts very well",
+                        "Appreciates complex moral situations and tough choices",
+                        "Enjoys worldbuilding and survival strategy elements",
+                        "Can handle intense content when it feels 'earned' by the story"
+                    ],
+                    challenges: [
+                        "May struggle with supernatural elements that feel arbitrary",
+                        "Could be uncomfortable with violence that seems gratuitous",
+                        "Might find traditional ghost stories too tame or unrealistic"
+                    ],
+                    perfectMatches: [
+                        "28 Days Later (2002) - Intelligent zombie survival",
+                        "The Road (2009) - Post-apocalyptic father-son story",
+                        "A Quiet Place (2018) - Family survival against creatures",
+                        "Train to Busan (2016) - Zombie thriller with heart"
+                    ],
+                    goodMatches: [
+                        "The Walking Dead - Long-form survival storytelling",
+                        "Mad Max: Fury Road (2015) - Action-heavy survival",
+                        "I Am Legend (2007) - Isolation and survival themes"
+                    ],
+                    avoidCompletely: [
+                        "Supernatural possession films - Too disconnected from reality",
+                        "Torture-focused horror - Violence without survival context",
+                        "Pure ghost stories - May feel too abstract"
+                    ],
+                    tips: "Explore zombie films, post-apocalyptic thrillers, and creature features with survival elements. Video game adaptations often match your preferences.",
+                    stats: stats
+                };
+            } else if ((scores.gore + scores.bodyhorror + scores.creative) >= 8) {
+                stats['Gore Tolerance'] *= 1.6;
+                stats['Creative/Comedy'] *= 1.4;
+                return {
+                    type: "The Gore Enthusiast",
+                    subtitle: "The Effects Connoisseur",
+                    description: `You appreciate the artistry behind horror effects and can handle graphic content when it's creatively executed. You're drawn to innovative death sequences, practical effects, and the technical craft of horror filmmaking. You understand that extreme content can be both shocking and artistic when done well.`,
+                    strengths: [
+                        "High tolerance for graphic content and violence",
+                        "Appreciates technical craftsmanship in horror effects",
+                        "Can enjoy films others find too intense",
+                        "Values creativity and innovation in horror presentation"
+                    ],
+                    challenges: [
+                        "Others may not share your tolerance levels",
+                        "Could become desensitized to moderate horror",
+                        "Might overlook story quality in favor of effects"
+                    ],
+                    perfectMatches: [
+                        "Final Destination series - Creative death sequences",
+                        "Evil Dead (2013) - Intense practical effects",
+                        "The Thing (1982) - Masterful body horror effects",
+                        "Dead Alive/Braindead (1992) - Over-the-top gore comedy"
+                    ],
+                    goodMatches: [
+                        "Hellraiser series - Creative and extreme imagery",
+                        "The Fly (1986) - Transformation body horror",
+                        "Re-Animator (1985) - Mad science gore"
+                    ],
+                    avoidCompletely: [
+                        "Slow-burn psychological horror - May feel too tame",
+                        "Atmospheric ghost stories - Might lack the intensity you crave"
+                    ],
+                    tips: "Explore practical effects showcases and behind-the-scenes content. Consider international extreme horror for unique perspectives.",
+                    stats: stats
+                };
+            } else if ((scores.comedy + scores.creative) >= 6) {
+                stats['Creative/Comedy'] *= 1.5;
+                stats['Gore Tolerance'] *= 1.2;
+                return {
+                    type: "The Horror Comedian",
+                    subtitle: "The Dark Humor Aficionado",
+                    description: `You love when horror doesn't take itself too seriously. You appreciate the balance between scares and laughs, enjoying films that can make you jump and chuckle in the same scene. You understand that comedy can enhance rather than diminish horror, and you're drawn to creative, playful approaches to the genre.`,
+                    strengths: [
+                        "Can handle intense content when balanced with humor",
+                        "Appreciates creative and unconventional horror approaches",
+                        "Enjoys both scares and entertainment value",
+                        "Less likely to be traumatized by graphic content due to comedic framing"
+                    ],
+                    challenges: [
+                        "Might struggle with purely serious, grim horror",
+                        "Could miss the deeper meanings in straight horror films",
+                        "May not appreciate subtle, atmospheric horror"
+                    ],
+                    perfectMatches: [
+                        "Shaun of the Dead (2004) - Perfect zombie comedy balance",
+                        "What We Do in the Shadows (2014) - Vampire mockumentary",
+                        "Tucker and Dale vs Evil (2010) - Horror trope parody",
+                        "Young Frankenstein (1974) - Classic horror comedy"
+                    ],
+                    goodMatches: [
+                        "Zombieland (2009) - Action horror comedy",
+                        "The Cabin in the Woods (2011) - Meta horror with humor",
+                        "Army of Darkness (1992) - Campy horror adventure"
+                    ],
+                    avoidCompletely: [
+                        "Torture porn - Too grim without comedic relief",
+                        "Slow-burn atmospheric horror - May feel too serious",
+                        "Depressing post-apocalyptic films - Lack humor balance"
+                    ],
+                    tips: "Look for horror comedies and films that blend genres creatively. Directors like Edgar Wright and Peter Jackson often match your taste.",
+                    stats: stats
+                };
+            } else {
+                return {
+                    type: "The Balanced Horror Fan",
+                    subtitle: "The Versatile Viewer",
+                    description: `You enjoy a wide range of horror elements but maintain clear personal boundaries. You appreciate good storytelling with moderate scares and can adapt to different horror styles depending on your mood. You represent the mainstream horror audience - open to various experiences but with defined comfort zones.`,
+                    strengths: [
+                        "Flexible viewing preferences allow for diverse horror experiences",
+                        "Can appreciate both story-driven and effect-heavy films",
+                        "Good at identifying personal limits and respecting them",
+                        "Represents the target audience for most mainstream horror"
+                    ],
+                    challenges: [
+                        "May miss out on more specialized or extreme horror experiences",
+                        "Could struggle to find the perfect intensity level",
+                        "Might need to research films more thoroughly before viewing"
+                    ],
+                    perfectMatches: [
+                        "Scream (1996) - Meta-horror with balanced elements",
+                        "The Ring (2002) - Mainstream supernatural horror",
+                        "Poltergeist (1982) - Family-friendly supernatural thrills",
+                        "Insidious (2010) - Modern supernatural with jump scares"
+                    ],
+                    goodMatches: [
+                        "The Conjuring series - Well-crafted mainstream horror",
+                        "Halloween (1978) - Classic slasher with restraint",
+                        "Lights Out (2016) - Simple concept, moderate scares"
+                    ],
+                    avoidCompletely: [
+                        "Extreme gore films - Likely beyond your comfort zone",
+                        "Art house experimental horror - May be too abstract",
+                        "Torture porn subgenre - Probably too intense"
+                    ],
+                    tips: "Use ratings, reviews, and content warnings to find your sweet spot. Mainstream horror from major studios is usually a safe bet.",
+                    stats: stats
+                };
+            }
+        } * 1.5)),
                 'Psychological': Math.max(0, Math.min(10, (scores.psychological + scores.narrative) * 1.2)),
                 'Survival': Math.max(0, Math.min(10, (scores.apocalypse + scores.action) * 1.5)),
                 'Intelligence': Math.max(0, Math.min(10, scores.intelligence * 2)),
@@ -436,7 +833,37 @@
                 stats['Jump Scares'] *= 0.5;
                 return {
                     type: "The Cautious Viewer",
-                    description: "You prefer psychological tension over graphic content. Perfect for mystery thrillers, ghost stories, and suspenseful films that rely on atmosphere rather than shock value. <br><br><strong>Recommended:</strong> The Others, The Sixth Sense, Psycho (1960)",
+                    subtitle: "The Atmosphere Seeker",
+                    description: `You prefer psychological tension and atmospheric dread over graphic content. You appreciate the art of building suspense and find that suggestion is often more powerful than explicit imagery. Your ideal horror experience relies on mood, cinematography, and psychological depth rather than shock tactics.`,
+                    strengths: [
+                        "Highly attuned to subtle horror elements and atmosphere",
+                        "Appreciates sophisticated storytelling and character development",
+                        "Values films that respect audience intelligence",
+                        "Enjoys the psychological aspects of fear more than physical"
+                    ],
+                    challenges: [
+                        "May miss out on well-crafted films with moderate gore",
+                        "Could be overwhelmed by sudden intensity spikes",
+                        "Might struggle with horror comedies that mix violence with humor"
+                    ],
+                    perfectMatches: [
+                        "The Others (2001) - Atmospheric ghost story",
+                        "The Sixth Sense (1999) - Psychological supernatural drama", 
+                        "The Babadook (2014) - Psychological horror about grief",
+                        "Psycho (1960) - Classic psychological thriller"
+                    ],
+                    goodMatches: [
+                        "The Ring (2002) - Some disturbing imagery but story-focused",
+                        "Rosemary's Baby (1968) - Slow-burn psychological horror",
+                        "The Conjuring (2013) - Well-crafted with moderate scares"
+                    ],
+                    avoidCompletely: [
+                        "Saw franchise - Graphic torture sequences",
+                        "Hostel series - Extreme gore and violence", 
+                        "The Human Centipede - Disturbing body horror",
+                        "Final Destination series - Creative but graphic deaths"
+                    ],
+                    tips: "Start with classic supernatural films and gradually explore modern psychological horror. Read content warnings and viewer discussions before watching.",
                     stats: stats
                 };
             } else if (scores.narrative >= 4 && scores.intelligence >= 4) {
@@ -444,7 +871,36 @@
                 stats.Narrative *= 1.3;
                 return {
                     type: "The Narrative Purist",
-                    description: "You appreciate horror that serves a story purpose and features intelligent characters. You can handle moderate content when it's well-crafted and meaningful. <br><br><strong>Recommended:</strong> The Conjuring, Alien (1979), Get Out",
+                    subtitle: "The Story-Driven Explorer",
+                    description: `You're the sophisticated horror fan who demands that every scare serve a purpose. You appreciate intelligent characters making reasonable decisions, and you can handle moderate to intense content when it's well-crafted and meaningful. You're drawn to horror that explores deeper themes and respects both character agency and audience intelligence.`,
+                    strengths: [
+                        "Excellent at identifying quality horror from cheap thrills",
+                        "Can handle intense content when it serves the story",
+                        "Appreciates subtext, themes, and social commentary in horror",
+                        "Values character development and intelligent plot construction"
+                    ],
+                    challenges: [
+                        "May become frustrated with 'stupid character' decisions",
+                        "Could dismiss films with style-over-substance approaches",
+                        "Might struggle with purely visceral or experimental horror"
+                    ],
+                    perfectMatches: [
+                        "The Conjuring (2013) - Well-crafted supernatural horror",
+                        "Alien (1979) - Intelligent sci-fi horror with smart characters",
+                        "Get Out (2017) - Social thriller with deeper meaning",
+                        "Hereditary (2018) - Complex family horror with rich themes"
+                    ],
+                    goodMatches: [
+                        "The Wailing (2016) - Mysterious supernatural thriller",
+                        "It Follows (2014) - Unique concept with intelligent execution",
+                        "The Witch (2015) - Period horror with authentic atmosphere"
+                    ],
+                    avoidCompletely: [
+                        "Most slasher sequels - Repetitive and character-light",
+                        "Torture porn subgenre - Violence without purpose",
+                        "Generic possession films - Formulaic and predictable"
+                    ],
+                    tips: "Seek out critically acclaimed horror films and read reviews from sources that value storytelling. Foreign horror often offers fresh perspectives.",
                     stats: stats
                 };
             } else if (scores.apocalypse >= 4) {
@@ -452,7 +908,36 @@
                 stats.Gore *= 1.2;
                 return {
                     type: "The Survivor",
-                    description: "Post-apocalyptic and survival horror is your sweet spot. You enjoy scenarios where violence feels justified and characters fight back intelligently. <br><br><strong>Recommended:</strong> 28 Days Later, The Road, A Quiet Place",
+                    subtitle: "The Post-Apocalyptic Enthusiast",
+                    description: `You thrive on survival horror and post-apocalyptic scenarios where violence feels justified and characters fight back intelligently. You appreciate the harsh realities of extreme situations and can handle graphic content when it serves the survival narrative. You're drawn to stories about human resilience and adaptation.`,
+                    strengths: [
+                        "Handles realistic violence in survival contexts very well",
+                        "Appreciates complex moral situations and tough choices",
+                        "Enjoys worldbuilding and survival strategy elements",
+                        "Can handle intense content when it feels 'earned' by the story"
+                    ],
+                    challenges: [
+                        "May struggle with supernatural elements that feel arbitrary",
+                        "Could be uncomfortable with violence that seems gratuitous",
+                        "Might find traditional ghost stories too tame or unrealistic"
+                    ],
+                    perfectMatches: [
+                        "28 Days Later (2002) - Intelligent zombie survival",
+                        "The Road (2009) - Post-apocalyptic father-son story",
+                        "A Quiet Place (2018) - Family survival against creatures",
+                        "Train to Busan (2016) - Zombie thriller with heart"
+                    ],
+                    goodMatches: [
+                        "The Walking Dead - Long-form survival storytelling",
+                        "Mad Max: Fury Road (2015) - Action-heavy survival",
+                        "I Am Legend (2007) - Isolation and survival themes"
+                    ],
+                    avoidCompletely: [
+                        "Supernatural possession films - Too disconnected from reality",
+                        "Torture-focused horror - Violence without survival context",
+                        "Pure ghost stories - May feel too abstract"
+                    ],
+                    tips: "Explore zombie films, post-apocalyptic thrillers, and creature features with survival elements. Video game adaptations often match your preferences.",
                     stats: stats
                 };
             } else if (scores.gore >= 4 && scores.creative >= 2) {
@@ -460,13 +945,70 @@
                 stats['Jump Scares'] *= 1.2;
                 return {
                     type: "The Gore Enthusiast",
-                    description: "You appreciate creative, well-executed horror effects and don't mind graphic content when it's artistically done. You likely enjoy practical effects and innovative death sequences. <br><br><strong>Recommended:</strong> Final Destination series, Evil Dead (2013), The Thing (1982)",
+                    subtitle: "The Effects Connoisseur",
+                    description: `You appreciate the artistry behind horror effects and can handle graphic content when it's creatively executed. You're drawn to innovative death sequences, practical effects, and the technical craft of horror filmmaking. You understand that extreme content can be both shocking and artistic when done well.`,
+                    strengths: [
+                        "High tolerance for graphic content and violence",
+                        "Appreciates technical craftsmanship in horror effects",
+                        "Can enjoy films others find too intense",
+                        "Values creativity and innovation in horror presentation"
+                    ],
+                    challenges: [
+                        "Others may not share your tolerance levels",
+                        "Could become desensitized to moderate horror",
+                        "Might overlook story quality in favor of effects"
+                    ],
+                    perfectMatches: [
+                        "Final Destination series - Creative death sequences",
+                        "Evil Dead (2013) - Intense practical effects",
+                        "The Thing (1982) - Masterful body horror effects",
+                        "Dead Alive/Braindead (1992) - Over-the-top gore comedy"
+                    ],
+                    goodMatches: [
+                        "Hellraiser series - Creative and extreme imagery",
+                        "The Fly (1986) - Transformation body horror",
+                        "Re-Animator (1985) - Mad science gore"
+                    ],
+                    avoidCompletely: [
+                        "Slow-burn psychological horror - May feel too tame",
+                        "Atmospheric ghost stories - Might lack the intensity you crave"
+                    ],
+                    tips: "Explore practical effects showcases and behind-the-scenes content. Consider international extreme horror for unique perspectives.",
                     stats: stats
                 };
             } else {
                 return {
                     type: "The Balanced Horror Fan",
-                    description: "You enjoy a mix of horror elements but have clear boundaries. You appreciate good storytelling with moderate scares and can handle some intensity when it's well-executed. <br><br><strong>Recommended:</strong> Scream, The Ring, Poltergeist",
+                    subtitle: "The Versatile Viewer",
+                    description: `You enjoy a wide range of horror elements but maintain clear personal boundaries. You appreciate good storytelling with moderate scares and can adapt to different horror styles depending on your mood. You represent the mainstream horror audience - open to various experiences but with defined comfort zones.`,
+                    strengths: [
+                        "Flexible viewing preferences allow for diverse horror experiences",
+                        "Can appreciate both story-driven and effect-heavy films",
+                        "Good at identifying personal limits and respecting them",
+                        "Represents the target audience for most mainstream horror"
+                    ],
+                    challenges: [
+                        "May miss out on more specialized or extreme horror experiences",
+                        "Could struggle to find the perfect intensity level",
+                        "Might need to research films more thoroughly before viewing"
+                    ],
+                    perfectMatches: [
+                        "Scream (1996) - Meta-horror with balanced elements",
+                        "The Ring (2002) - Mainstream supernatural horror",
+                        "Poltergeist (1982) - Family-friendly supernatural thrills",
+                        "Insidious (2010) - Modern supernatural with jump scares"
+                    ],
+                    goodMatches: [
+                        "The Conjuring series - Well-crafted mainstream horror",
+                        "Halloween (1978) - Classic slasher with restraint",
+                        "Lights Out (2016) - Simple concept, moderate scares"
+                    ],
+                    avoidCompletely: [
+                        "Extreme gore films - Likely beyond your comfort zone",
+                        "Art house experimental horror - May be too abstract",
+                        "Torture porn subgenre - Probably too intense"
+                    ],
+                    tips: "Use ratings, reviews, and content warnings to find your sweet spot. Mainstream horror from major studios is usually a safe bet.",
                     stats: stats
                 };
             }
@@ -546,7 +1088,10 @@
             scores = {
                 narrative: 0, gore: 0, mild: 0, psychological: 0, apocalypse: 0,
                 intelligence: 0, quick: 0, torture: 0, jumpscares: 0, animal: 0,
-                creative: 0, entertainment: 0, human: 0, supernatural: 0, fantasy: 0, action: 0
+                creative: 0, entertainment: 0, human: 0, supernatural: 0, fantasy: 0, 
+                action: 0, suspense: 0, realistic: 0, bodyhorror: 0, survival: 0,
+                protective: 0, comedy: 0, serious: 0, dark: 0, hopeful: 0,
+                medical: 0, traditional: 0, social: 0, simple: 0
             };
             
             document.getElementById('results-container').style.display = 'none';
