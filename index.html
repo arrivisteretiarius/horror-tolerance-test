@@ -178,37 +178,52 @@
 
         .web-visual {
             margin: 30px 0;
-            position: relative;
-            height: 300px;
+            padding: 20px;
+        }
+
+        .stats-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .stat-row {
             display: flex;
             align-items: center;
-            justify-content: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
         }
 
-        .web-circle {
-            width: 200px;
-            height: 200px;
-            border: 3px solid rgba(255, 107, 107, 0.6);
-            border-radius: 50%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tolerance-dot {
-            width: 20px;
-            height: 20px;
-            background: #ff6b6b;
-            border-radius: 50%;
-            position: absolute;
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
-        }
-
-        .web-labels {
-            position: absolute;
+        .stat-label {
+            width: 120px;
             font-size: 0.9em;
-            color: #bbb;
+            color: #ddd;
+            font-weight: 600;
+        }
+
+        .stat-bar-container {
+            flex: 1;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 0 15px;
+            overflow: hidden;
+        }
+
+        .stat-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+            border-radius: 10px;
+            transition: width 0.8s ease;
+            position: relative;
+        }
+
+        .stat-value {
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 0.9em;
+            min-width: 25px;
         }
 
         @media (max-width: 768px) {
@@ -248,8 +263,8 @@
                 <div class="tolerance-type" id="tolerance-type">Calculating...</div>
                 <div class="description" id="result-description"></div>
                 <div class="web-visual">
-                    <div class="web-circle" id="web-circle">
-                        <div class="tolerance-dot" id="tolerance-dot"></div>
+                    <div class="stats-container" id="stats-container">
+                        <!-- Stats bars will be inserted here -->
                     </div>
                 </div>
                 <button class="restart-btn" onclick="restartQuiz()">Take Test Again</button>
@@ -400,54 +415,130 @@
             document.getElementById('tolerance-type').textContent = result.type;
             document.getElementById('result-description').innerHTML = result.description;
             
-            // Position the dot based on tolerance level
-            positionToleranceDot(result.intensity);
+            // Create hexagon visualization
+            createHexagonChart(result.stats);
         }
 
         function calculateToleranceType() {
+            // Calculate normalized stats (0-10 scale)
+            const stats = {
+                'Gore': Math.max(0, Math.min(10, (scores.gore + 3) * 1.5)),
+                'Psychological': Math.max(0, Math.min(10, (scores.psychological + scores.narrative) * 1.2)),
+                'Survival': Math.max(0, Math.min(10, (scores.apocalypse + scores.action) * 1.5)),
+                'Intelligence': Math.max(0, Math.min(10, scores.intelligence * 2)),
+                'Jump Scares': Math.max(0, Math.min(10, (scores.jumpscares + 3) * 1.5)),
+                'Narrative': Math.max(0, Math.min(10, scores.narrative * 1.5))
+            };
+
             // Determine tolerance type based on scores
             if (scores.mild >= 6) {
+                stats.Gore *= 0.3;
+                stats['Jump Scares'] *= 0.5;
                 return {
                     type: "The Cautious Viewer",
                     description: "You prefer psychological tension over graphic content. Perfect for mystery thrillers, ghost stories, and suspenseful films that rely on atmosphere rather than shock value. <br><br><strong>Recommended:</strong> The Others, The Sixth Sense, Psycho (1960)",
-                    intensity: 0.2
+                    stats: stats
                 };
             } else if (scores.narrative >= 4 && scores.intelligence >= 4) {
+                stats.Intelligence *= 1.3;
+                stats.Narrative *= 1.3;
                 return {
                     type: "The Narrative Purist",
                     description: "You appreciate horror that serves a story purpose and features intelligent characters. You can handle moderate content when it's well-crafted and meaningful. <br><br><strong>Recommended:</strong> The Conjuring, Alien (1979), Get Out",
-                    intensity: 0.4
+                    stats: stats
                 };
             } else if (scores.apocalypse >= 4) {
+                stats.Survival *= 1.4;
+                stats.Gore *= 1.2;
                 return {
                     type: "The Survivor",
                     description: "Post-apocalyptic and survival horror is your sweet spot. You enjoy scenarios where violence feels justified and characters fight back intelligently. <br><br><strong>Recommended:</strong> 28 Days Later, The Road, A Quiet Place",
-                    intensity: 0.6
+                    stats: stats
                 };
             } else if (scores.gore >= 4 && scores.creative >= 2) {
+                stats.Gore *= 1.5;
+                stats['Jump Scares'] *= 1.2;
                 return {
                     type: "The Gore Enthusiast",
                     description: "You appreciate creative, well-executed horror effects and don't mind graphic content when it's artistically done. You likely enjoy practical effects and innovative death sequences. <br><br><strong>Recommended:</strong> Final Destination series, Evil Dead (2013), The Thing (1982)",
-                    intensity: 0.8
+                    stats: stats
                 };
             } else {
                 return {
                     type: "The Balanced Horror Fan",
                     description: "You enjoy a mix of horror elements but have clear boundaries. You appreciate good storytelling with moderate scares and can handle some intensity when it's well-executed. <br><br><strong>Recommended:</strong> Scream, The Ring, Poltergeist",
-                    intensity: 0.5
+                    stats: stats
                 };
             }
         }
 
-        function positionToleranceDot(intensity) {
-            const dot = document.getElementById('tolerance-dot');
-            const radius = 90; // Distance from center
-            const angle = intensity * 360; // Convert to degrees
+        function createHexagonChart(stats) {
+            const container = document.getElementById('stats-container');
             
-            const x = Math.cos(angle * Math.PI / 180) * (radius * intensity);
-            const y = Math.sin(angle * Math.PI / 180) * (radius * intensity);
+            const statNames = Object.keys(stats);
+            const statValues = Object.values(stats);
             
-            dot.style.transform = `translate(${x}px, ${y}px)`;
+            let html = '<h3 style="text-align: center; margin-bottom: 25px; color: #fff;">Your Horror Tolerance Profile</h3>';
+            
+            statNames.forEach((name, index) => {
+                const value = Math.round(statValues[index]);
+                const percentage = (value / 10) * 100;
+                
+                html += `
+                    <div class="stat-row">
+                        <div class="stat-label">${name}</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="stat-value">${value}/10</div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            
+            // Animate bars after a short delay
+            setTimeout(() => {
+                const bars = document.querySelectorAll('.stat-bar');
+                bars.forEach(bar => {
+                    bar.style.width = bar.style.width; // Trigger animation
+                });
+            }, 100);
+        }
+        
+        function createHexagonPath(centerX, centerY, radius) {
+            let path = '';
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * 60 - 90) * Math.PI / 180;
+                const x = centerX + radius * Math.cos(angle);
+                const y = centerY + radius * Math.sin(angle);
+                
+                if (i === 0) {
+                    path += `M ${x} ${y}`;
+                } else {
+                    path += ` L ${x} ${y}`;
+                }
+            }
+            path += ' Z';
+            return path;
+        }
+        
+        function createTolerancePath(centerX, centerY, maxRadius, values) {
+            let path = '';
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * 60 - 90) * Math.PI / 180;
+                const radius = (maxRadius * values[i]) / 10;
+                const x = centerX + radius * Math.cos(angle);
+                const y = centerY + radius * Math.sin(angle);
+                
+                if (i === 0) {
+                    path += `M ${x} ${y}`;
+                } else {
+                    path += ` L ${x} ${y}`;
+                }
+            }
+            path += ' Z';
+            return path;
         }
 
         function restartQuiz() {
